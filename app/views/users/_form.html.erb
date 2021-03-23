@@ -5,5 +5,13 @@
   <%= f.email_field :email, placeholder: "example@example.com" %>
   <%= f.label :password %>
   <%= f.password_field :password, placeholder: "Password" %>
+  <% if user.errors.any? %>
+    <br><div>The form has <%= pluralize(user.errors.count, "error") %>.</div>
+    <ul>
+      <% user.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <% end %>
   <%= f.submit %>
 <% end %>
